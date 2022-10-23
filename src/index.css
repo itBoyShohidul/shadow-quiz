@@ -78,6 +78,15 @@ code {
   opacity: 80%;
   cursor: pointer;
 }
+.result-box {
+  max-width: 700px;
+  max-height: 100%;
+  margin: 80px auto;
+  padding: 20px;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.486);
+  border-radius: 10px;
+}
 
 /* ===========================
    Responsive 
@@ -86,6 +95,9 @@ code {
 @media only screen and (max-width: 600px) {
   .box {
     flex-direction: column;
+    width: 80%;
+  }
+  .result-box {
     width: 80%;
   }
   .right {

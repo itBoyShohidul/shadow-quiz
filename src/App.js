@@ -1,8 +1,10 @@
 import { useState } from "react";
 import data from "./json/computer.json";
 import quizImage from "./image/quiz.png";
+import { useNavigate } from "react-router-dom";
 
 function App() {
+  const navigate = useNavigate();
   const [count, setCount] = useState(0);
   const [rightAnser, setRightAnser] = useState(1);
   const [point, setPoint] = useState(0);
@@ -32,7 +34,8 @@ function App() {
   };
   const nextFunction = () => {
     if (count === data.results.length - 1) {
-      setCount(data.results.length - 1);
+      // setCount(data.results.length - 1);
+      navigate(`/result/${point}`);
     } else {
       setCount((prev) => prev + 1);
     }
@@ -46,61 +49,83 @@ function App() {
     setDisable3(false);
     setDisable4(false);
   };
+
   const buttonHandler1 = () => {
-    setSelected({
-      backgroundColor: "green",
-    });
+    if (rightAnser === 0) {
+      setPoint((prev) => prev + 10);
+      setSelected({
+        backgroundColor: "green",
+      });
+    } else {
+      setSelected({
+        backgroundColor: "red",
+      });
+    }
     setSelected2(null);
     setSelected3(null);
     setSelected4(null);
-    if (rightAnser === 0) {
-      setPoint((prev) => prev + 5);
-    }
+
     setDisable1(true);
     setDisable2(true);
     setDisable3(true);
     setDisable4(true);
   };
   const buttonHandler2 = () => {
-    setSelected2({
-      backgroundColor: "green",
-    });
+    if (rightAnser === 1) {
+      setPoint((prev) => prev + 10);
+      setSelected2({
+        backgroundColor: "green",
+      });
+    } else {
+      setSelected2({
+        backgroundColor: "red",
+      });
+    }
     setSelected(null);
     setSelected3(null);
     setSelected4(null);
-    if (rightAnser === 1) {
-      setPoint((prev) => prev + 5);
-    }
+
     setDisable1(true);
     setDisable2(true);
     setDisable3(true);
     setDisable4(true);
   };
   const buttonHandler3 = () => {
-    setSelected3({
-      backgroundColor: "green",
-    });
+    if (rightAnser === 2) {
+      setPoint((prev) => prev + 10);
+      setSelected3({
+        backgroundColor: "green",
+      });
+    } else {
+      setSelected3({
+        backgroundColor: "red",
+      });
+    }
+
     setSelected2(null);
     setSelected(null);
     setSelected4(null);
-    if (rightAnser === 2) {
-      setPoint((prev) => prev + 5);
-    }
+
     setDisable1(true);
     setDisable2(true);
     setDisable3(true);
     setDisable4(true);
   };
   const buttonHandler4 = () => {
-    setSelected4({
-      backgroundColor: "green",
-    });
+    if (rightAnser === 3) {
+      setPoint((prev) => prev + 10);
+      setSelected4({
+        backgroundColor: "green",
+      });
+    } else {
+      setSelected4({
+        backgroundColor: "red",
+      });
+    }
     setSelected2(null);
     setSelected3(null);
     setSelected(null);
-    if (rightAnser === 3) {
-      setPoint((prev) => prev + 5);
-    }
+
     setDisable1(true);
     setDisable2(true);
     setDisable3(true);
@@ -111,10 +136,12 @@ function App() {
       <div className="left">
         <h1>
           Question {count + 1} of {data.results.length}
+          {` ${count}`}
         </h1>
+        {/* Right Answer
         <h3>
           Right Answer {rightAnser} and Score {point}{" "}
-        </h3>
+        </h3> */}
         <h2 className="question">{data.results[count].question}</h2>
 
         <button

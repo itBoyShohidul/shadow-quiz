@@ -2,6 +2,18 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Result from "./pages/Result";
+import Error from "./pages/Error";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+root.render(
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="/result" element={<Result />} />
+      <Route path="/result/:point" element={<Result />} />
+      <Route path="*" element={<Error />} />
+    </Routes>
+  </BrowserRouter>
+);
