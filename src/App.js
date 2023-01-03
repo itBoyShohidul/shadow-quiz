@@ -136,7 +136,6 @@ function App() {
       <div className="left">
         <h1>
           Question {count + 1} of {data.results.length}
-          {` ${count}`}
         </h1>
         {/* Right Answer
         <h3>
